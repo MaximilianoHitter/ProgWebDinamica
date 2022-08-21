@@ -1,0 +1,26 @@
+body{
+    background-color: blueviolet;
+}
+
+form{
+    background-color: aliceblue;
+    width: 450px;
+    border: solid;
+}
+
+label{
+    
+    text-align: center;
+    padding: 15px;
+}
+
+.boton{
+    background-color: brown;
+    color: white;
+    text-align: center;
+   
+}
+input{
+    margin: 10px;
+    padding: 2px;
+}
