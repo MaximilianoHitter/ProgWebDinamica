@@ -1,0 +1,37 @@
+.contenedor-formulario{
+    border: 1px solid #cdcdcd;
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px;
+    margin: 30px;
+}
+
+.contenedor-formulario form{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.form_group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#btnEnviar{
+    margin-top: 15px;
+    width: 100px;
+}
+
+.error{
+    border: 1px solid red;
+    padding: 10px;
+    margin: 15px 0 !important;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.textArea{
+    margin: 0 auto;
+}
