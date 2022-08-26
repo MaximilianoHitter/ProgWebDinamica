@@ -13,7 +13,7 @@
 <body>
     <?php
 
-    $dir = '/xampp1.0/htdocs/TP3/Ejercicio2/archivos/';
+    $dir = '../Archivos/';
     $name = $_FILES['formFile']['name'];
 
     if ($_FILES['formFile']['error'] <= 0) {
@@ -26,7 +26,7 @@
             if (!copy($_FILES['formFile']['tmp_name'], $dir . $_FILES['formFile']['name'])) {
                 echo 'No se pudo cargar el archivo';
             } else {
-                $contenido = file_get_contents('../archivos/' . $name);
+                $contenido = file_get_contents('../Archivos/' . $name);
                 echo "<div class=\"textArea\">
             <textarea rows='9' cols='60'>
             $contenido

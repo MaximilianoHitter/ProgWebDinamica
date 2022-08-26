@@ -17,14 +17,14 @@
             <?php
             if (isset($_POST)) {
                 //recuperacion de datos 
-                $dir = '/wamp64/www/UNCO/TP3/EJ3/archivos/';
+                $dir = '../Archivos/';
                 if (isset($_FILES)) {
                     if ($_FILES['archivo']['error'] <= 0) {
                         //var_dump($_FILES['archivo']['type']);
                         if ($_FILES['archivo']['type'] == 'image/jpeg') {
                             if (copy($_FILES['archivo']['tmp_name'], $dir . $_FILES['archivo']['name'])) {
                                 $direccion = $dir . $_FILES['archivo']['name'];
-                                $direccionRelativa = "../archivos/" . $_FILES['archivo']['name'];
+                                $direccionRelativa = "../Archivos/" . $_FILES['archivo']['name'];
                                 echo "<img src=\"$direccionRelativa\" class=\"img\" alt=\"una imagen de pelicula\"><br>";
                             } else {
                                 echo 'No se ha podido copiar el archivo';

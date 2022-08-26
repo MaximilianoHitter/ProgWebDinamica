@@ -12,7 +12,7 @@
 <body>
 <?php
 
-$dir = '/xampp1.0/htdocs/TP3/Ejercicio1/archivos/';
+$dir = '../archivos/';
 $direccion = $_SERVER['SERVER_NAME'];
 
 if($_FILES['archivo']['error'] <= 0){
