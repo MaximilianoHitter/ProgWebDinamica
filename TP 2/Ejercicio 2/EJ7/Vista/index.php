@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/css/styles.css" />
+    <link rel="stylesheet" href="../../../../assets/style.css">
     <script src="styles/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
     <title>Mini Calculadora</title>
 </head>
@@ -50,6 +51,10 @@
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Realizar la operación</button>
         </div>
+
+        <br>
+        <a href="../../index.html"><button type="button" class="btn btn-danger">Volver atras</button></a>
+        
     </form>
 
     <script>
