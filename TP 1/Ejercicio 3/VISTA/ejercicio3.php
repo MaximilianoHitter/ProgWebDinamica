@@ -7,6 +7,7 @@
     </head>
 
     <body>
+    <?php include('../../header.php'); ?>
        <form action="..\CONTROLADOR\ejecuto3.php" method="post">
         <label for="name">NOMBRE: </label> <input type="text" id="name" name="name"><br>
         <label for="apell">APELLIDO: </label><input type="text" id="apell" name="apell"><br>
@@ -17,6 +18,8 @@
         <input class="boton" type="submit" name="submit" value="enviar">
         
        </form>
+       <button type="button"><a href="../../../index.html"> Volver al inicio</a></button>
+       <?php include('../../footer.php'); ?>
     </body>
 
 

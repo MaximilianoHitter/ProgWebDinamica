@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<?php include('../../header.php'); ?>
     <form action="../Controlador/cuenta.php" method="post">
         <label for="numero1">Primer número:</label>
         <input type="text" name="numero1" id="numero1">
@@ -25,5 +26,7 @@
         <br>
         <input type="submit" name="submit" value="Enviar">
     </form>
+    <button type="button"><a href="../../../index.html"> Volver al inicio</a></button>
+    <?php include('../../footer.php'); ?>
 </body>
 </html>

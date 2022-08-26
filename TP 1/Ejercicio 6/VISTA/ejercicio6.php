@@ -6,6 +6,7 @@
     </head>
 
     <body>
+    <?php include('../../header.php'); ?>
        <form action="..\CONTROLADOR\ejecuta6.php" method="post">
         <label for="name">NOMBRE: </label> <input type="text" id="name" name="name"><br><br>
         <label for="apell">APELLIDO: </label><input type="text" id="apell" name="apell"><br><br>
@@ -29,8 +30,10 @@
         <input class="boton" type="submit" name="submit" value="enviar">
         
 
-        FALTA QUE LOS DEPORTES SALGAN...SOLO ME TOMA EL ULTIMO
-       </form>
+        
+    </form>
+    <button type="button"><a href="../../../index.html"> Volver al inicio</a></button>
+       <?php include('../../footer.php'); ?>
     </body>
 
 

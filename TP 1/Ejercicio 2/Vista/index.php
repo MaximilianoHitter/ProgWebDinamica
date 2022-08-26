@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<?php include('../../header.php'); ?>
     <form id="form2" name="form2" method="get" action="../Control/horasCursada.php">
         <h2>Programacion Web Dinamica</h2>
         <!-- <p>Cuantas dias cursas esta materia?: </p>
@@ -21,7 +22,8 @@
         Viernes <input type="number" id="horasViernes_form" name="horasViernes_form"><br>
         <input type="submit" name="submit" value="Enviar" >
     </form>
-
+    <button type="button"><a href="../../../index.html"> Volver al inicio</a></button>
+    <?php include('../../footer.php'); ?>
     <!-- <script src="script.js"></script> -->
 </body>
 </html>

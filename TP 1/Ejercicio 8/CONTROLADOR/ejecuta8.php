@@ -1,8 +1,18 @@
 <?php 
 
-if($_GET){
-    $edad = $_GET['edad'];
-    $est = $_GET['estudiante'];
+if(isset($_GET)){
+    if(isset($_GET['edad'])){
+        $edad = $_GET['edad'];
+    }else{
+        $edad = 0;
+    }
+    if(isset($_GET['estudiante'])){
+        $est = $_GET['estudiante'];    
+    }else{
+        $est = 'estudiante';
+    }
+    
+    
 
     //Si es estudiante o menor de 12 años el precio es de $160,
     if($edad < 12 && $est == "estudiante"){

@@ -6,6 +6,7 @@
     </head>
 
     <body>
+    <?php include('../../header.php'); ?>
        <form action="..\CONTROLADOR\ejecuta5.php" method="get">
         <label for="name">NOMBRE: </label> <input type="text" id="name" name="name"><br><br>
         <label for="apell">APELLIDO: </label><input type="text" id="apell" name="apell"><br><br>
@@ -25,7 +26,8 @@
         <input class="boton" type="submit" name="submit" value="enviar">
         
        </form>
-       funciona
+       <button type="button"><a href="../../../index.html"> Volver al inicio</a></button>
+       <?php include('../../footer.php'); ?>
     </body>
 
     

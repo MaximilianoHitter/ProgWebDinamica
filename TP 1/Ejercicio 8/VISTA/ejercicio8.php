@@ -6,6 +6,7 @@
     </head>
 
     <body>
+    <?php include('../../header.php'); ?>
         <form action="..\CONTROLADOR\ejecuta8.php" method="get">
             <label for="edad">Ingrese su edad</label><input type="text" id="edad" name="edad"><br>
             <label for="estudiante">Estudiante o no?
@@ -14,6 +15,8 @@
             <br>
             <input class="boton" type="submit" name="submit" value="calcular $"> 
         </form>
+        <button type="button"><a href="../../../index.html"> Volver al inicio</a></button>
+        <?php include('../../footer.php'); ?>
     </body>
 
 

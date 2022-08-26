@@ -1,4 +1,5 @@
 <?php
+echo " <button type=\"button\"><a href=\"../../../index.html\"> Volver al inicio</a></button>";
 if(isset($_POST)){
     if(isset($_POST['numero1'])){
         $numero1 = intval($_POST['numero1']);
