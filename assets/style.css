@@ -1,0 +1,36 @@
+body {
+    font-family: "ClashDisplay", sans-serif;
+    line-height: 1.7;
+    color: #727272;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: all .2s ease;
+}
+
+a:hover {
+    box-shadow: 0 12px 32px rgba(224, 224, 224, 0.175);
+}
+
+.page {
+    background: linear-gradient(rgba(0, 0, 0, 0.507), rgba(0, 0, 0, 0.438));
+    background-position: center;
+    background-size: cover;
+}
+
+.background-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.card {
+    display: inline-block;
+}
