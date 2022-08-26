@@ -1,0 +1,3 @@
+Boton de volver en los ejercicios del tp2 para volver al index
+agregar el favicon a los del ejercicio2 y ejercicio3
+añadir header y footer en los ejercicios de tp1

@@ -2,6 +2,7 @@
 
     <head>
     <title>EJERCICIO 6</title>
+    <link rel="icon" type="image/png" href="../../favicon.ico">
     </head>
 
     <body>

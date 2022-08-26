@@ -3,6 +3,7 @@
     <head>
     <title>EJERCICIO 3</title>
         <link rel="stylesheet" href="..\TP1-PDW\VISTA\CSS\ejercicio1.css">
+        <link rel="icon" type="image/png" href="../../favicon.ico">
     </head>
 
     <body>
