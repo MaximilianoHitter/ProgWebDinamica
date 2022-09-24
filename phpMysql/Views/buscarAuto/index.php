@@ -18,11 +18,11 @@
                 <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
                 <label for="patente">Patente</label>
                 <input type="hidden" name="accion" id="accion" value="buscarAutos">
-                <input class="btn m-3 p-2 text-center" style="background-color: #EB5E0B; color:white;" type="submit" value="Buscar autos">
+                <input class="btn m-3 p-2 text-center" id="botonSubmit" style="background-color: #EB5E0B; color:white;" type="submit" value="Buscar autos" disabled>
             </div>
         </form>
     </div>
-
+    <script src="../../Public/jsPuro/buscarAuto.js"></script>
     <?php require_once '../templates/footer.php'; ?>
 </body>
 

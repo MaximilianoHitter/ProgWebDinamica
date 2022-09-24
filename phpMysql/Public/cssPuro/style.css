@@ -1,10 +1,11 @@
-*{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 
 /* errores/index style */
 
-.containerError{
+.containerError {
     border: 1px solid #ddd;
     background-color: #F8F1F1;
     margin: 30px;
@@ -14,33 +15,44 @@
 
 /* templates/header style */
 
-#nav{
+#nav {
     background-color: #5EAAA8;
 }
 
-#nav li a{
+#nav li a {
     color: white;
 }
 
+
 /* Main/index style */
 
-#resumen{
+#resumen {
     padding: 10px;
     margin: 10px;
 }
+
 
 /* personas/index  style*/
 
-.containerPersonas{
+.containerPersonas {
     margin: 10px;
     padding: 10px;
 }
 
-#btnViewPeople{
+#btnViewPeople {
     background-color: #EB5E0B;
     color: white;
     border-radius: 5px;
     border: #EB5E0B;
 }
+
+.bad {
+    border: red 3px solid;
+}
+
+.gut {
+    border: green 3px solid;
+}
+
 
 /*  */

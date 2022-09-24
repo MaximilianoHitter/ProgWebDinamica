@@ -19,16 +19,17 @@
                 <label for="inputPatente">La patente</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" type="text" name="inputDni" id="inputDni">
+                <input class="form-control" type="number" name="inputDni" id="inputDni">
                 <label for="inputDni">El DNI del nuevo duenio</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="submit" value="Cambiar">
+                <input type="submit" value="Cambiar" id="botonSubmit" disabled>
             </div>
 
 
         </form>
     </div>
+    <script src="../../Public/jsPuro/cambiarDuenio.js"></script>
     <?php require_once '../templates/footer.php' ?>
 </body>
 

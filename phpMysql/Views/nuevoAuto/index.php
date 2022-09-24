@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Public/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Public/cssPuro/style.css">
-    <title>Document</title>
+    <title>Nuevo Auto</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 
             <div class="form-floating mb-3">
                 <label for="inputModelo">Modelo</label>
-                <input class="form-control" type="number" name="inputModelo" id="inputModelo">
+                <input class="form-control" type="number" name="inputModelo" step="1" min=0 id="inputModelo">
             </div>
 
             <div class="form-floating mb-3">
@@ -34,12 +34,12 @@
                 <input class="form-control" type="text" name="inputDniDuenio" id="inputDniDuenio">
             </div>
             <div class="form-floating mb-3">
-                <input class="btn" style="background-color: #EB5E0B; color:white;" type="submit" value="Agregar">
+                <input class="btn" style="background-color: #EB5E0B; color:white;" type="submit" value="Agregar" id="botonSubmit" disabled>
             </div>
 
         </form>
     </div>
-
+    <script src="../../Public/jsPuro/nuevoAuto.js"></script>
     <?php require_once '../templates/footer.php' ?>
 </body>
 
