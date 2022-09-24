@@ -1,0 +1,46 @@
+*{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+/* errores/index style */
+
+.containerError{
+    border: 1px solid #ddd;
+    background-color: #F8F1F1;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+
+/* templates/header style */
+
+#nav{
+    background-color: #5EAAA8;
+}
+
+#nav li a{
+    color: white;
+}
+
+/* Main/index style */
+
+#resumen{
+    padding: 10px;
+    margin: 10px;
+}
+
+/* personas/index  style*/
+
+.containerPersonas{
+    margin: 10px;
+    padding: 10px;
+}
+
+#btnViewPeople{
+    background-color: #EB5E0B;
+    color: white;
+    border-radius: 5px;
+    border: #EB5E0B;
+}
+
+/*  */
