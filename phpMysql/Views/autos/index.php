@@ -18,6 +18,8 @@
 
     
     <h3><p class= "titulos text-center bienvenida">AUTOS</p></h3>
+
+    <hr>
     <form action="../accion/verAutos.php" method="POST">
         <input type="hidden" name="accion" id="accion" value="verAutos">
         <input class="btn m-3 p-2 text-center" style="background-color: #563d7c; color:white;" type="submit" value="Ver Autos">
@@ -38,10 +40,7 @@
 
     <div>
         <a class="btn" style="background-color: #563d7c; color:white;" href="../nuevoAuto/index.php">Cargar nuevo auto</a>
-        <hr>
-    </div>
-    <div>
-        <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../buscarPersona/index.php">Buscar Personas</a>
+    
     </div>
     <hr>
 
