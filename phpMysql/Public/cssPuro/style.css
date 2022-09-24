@@ -16,11 +16,22 @@
 /* templates/header style */
 
 #nav {
-    background-color: #5EAAA8;
+    background-color: #563d7c;
+    height: 70px;
+    text-align: center;
+    
+   
+    
 }
 
 #nav li a {
     color: white;
+    font-family: 'Bungee Shade', cursive;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: 30px;
+    
+    
 }
 
 
@@ -40,10 +51,10 @@
 }
 
 #btnViewPeople {
-    background-color: #EB5E0B;
+    background-color: #563d7c;
     color: white;
     border-radius: 5px;
-    border: #EB5E0B;
+    border: #563d7c;
 }
 
 .bad {
@@ -54,5 +65,33 @@
     border: green 3px solid;
 }
 
+.bienvenida{
+    font-family: 'Bungee Shade', cursive;
+    color:#563d7c;
+    font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.grupo, .grupo1{
+    font-family: 'Bungee Shade', cursive;
+    font-size: 30px;
+}
+.grupo1{
+    font-size: 40px;
+}
+
+/*
+.cuadro{
+    background-color: #563d7c;
+    width: 600px;
+    text-align: center;
+    color: #ddd;
+    
+}
+.hijo{
+    align-self: center;
+}
+*/
 
 /*  */

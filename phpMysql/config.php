@@ -13,7 +13,7 @@ $PROYECTO = 'phpMysql';
 // variable que almacena el directorio del proyecto
 $ROOT = $_SERVER['DOCUMENT_ROOT']."/$PROYECTO/";
 
-include_once($ROOT.'libs/funciones.php');
+include_once($ROOT.'./libs/funciones.php');
 
 // variable que define la pagina de autenticacion del proyecto
 $INICIO = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/View/login/login.php";

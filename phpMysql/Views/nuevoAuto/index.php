@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Public/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../Public/cssPuro/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
     <title>Nuevo Auto</title>
 </head>
 
@@ -39,6 +42,7 @@
 
         </form>
     </div>
+   
     <script src="../../Public/jsPuro/nuevoAuto.js"></script>
     <?php require_once '../templates/footer.php' ?>
 </body>
