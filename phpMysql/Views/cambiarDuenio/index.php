@@ -23,7 +23,7 @@
             </div>
             <div class="form-floating mb-3">
                 <input class="form-control" type="number" name="inputDni" id="inputDni">
-                <label for="inputDni">El DNI del nuevo duenio</label>
+                <label for="inputDni">El DNI del nuevo dueño</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="submit" value="Cambiar" id="botonSubmit" disabled>
