@@ -46,7 +46,8 @@ if ($resp = true) {
 
 <body>
     <?php require_once '../templates/header.php' ?>
-
+    <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../autos/index.php">Volver</a>
+   
     <?php // echo $mensaje[0]['duenio']->getNombre(); 
     ?>
     <div class="row m-3">

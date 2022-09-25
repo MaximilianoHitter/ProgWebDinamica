@@ -27,6 +27,7 @@
             </div>
             <div class="form-floating mb-3">
                 <input type="submit" value="Cambiar" id="botonSubmit" disabled>
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../autos/index.php">Volver</a>
             </div>
 
 

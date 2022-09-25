@@ -21,7 +21,8 @@
                 <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
                 <label for="patente">Patente</label>
                 <input type="hidden" name="accion" id="accion" value="buscarAutos">
-                <input class="btn m-3 p-2 text-center" id="botonSubmit" style="background-color: #EB5E0B; color:white;" type="submit" value="Buscar autos" disabled>
+                <input class="btn m-3 p-2 text-center" id="botonSubmit" style="background-color: #563d7c; color:white;" type="submit" value="Buscar auto" disabled>
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../autos/index.php">Volver</a>
             </div>
         </form>
     </div>

@@ -37,7 +37,8 @@
                 <input class="form-control" type="text" name="inputDniDuenio" id="inputDniDuenio">
             </div>
             <div class="form-floating mb-3">
-                <input class="btn" style="background-color: #EB5E0B; color:white;" type="submit" value="Agregar" id="botonSubmit" disabled>
+                <input class="btn" style="background-color: #563d7c; color:white;" type="submit" value="Agregar" id="botonSubmit" disabled>
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../autos/index.php">Volver</a>
             </div>
 
         </form>
