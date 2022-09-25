@@ -57,6 +57,7 @@
             <div class="mb-3">
                 <input type="hidden" name="accion" id="accion" value="nuevo">
                 <input id="btnViewPeople" class="p-2" type="submit" value="Enviar">
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
             </div>
            
             

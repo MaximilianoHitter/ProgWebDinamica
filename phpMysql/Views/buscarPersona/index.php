@@ -24,6 +24,7 @@
             </div>
             <div class="form-floating mb-3">
                 <button type="submit" value="Buscar" id="boton" disabled>Buscar</button>
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
             </div>
 
         </form>
