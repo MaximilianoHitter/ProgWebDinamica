@@ -137,7 +137,7 @@ class PersonaControl extends Controller{
         $persona = null;
         $objPersona = new Persona();
         $array = $objPersona->listar($sql);
-        if(count($array >0)){
+        if(count($array) >0){
             $persona = $array;
         }
         /* COMO LO TENIA JERO
