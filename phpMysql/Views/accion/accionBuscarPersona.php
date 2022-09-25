@@ -29,7 +29,9 @@ $mensaje = $objCtrlPersona->buscarPorDni($datos['inputDni']);
 <body>
     <?php require_once '../templates/header.php' ?>
 
-    <div class="containerForm m-3 p-2">
+    <?php 
+        if($mensaje != null){ ?>
+        <div class="containerForm m-3 p-2">
         <form action="../accion/ActualizarDatosPersona.php" method="post">
             <div class="form-floating mb-3">
                 <label for="inputDni"></label>
@@ -62,7 +64,12 @@ $mensaje = $objCtrlPersona->buscarPorDni($datos['inputDni']);
 
         </form>
     </div>
+       <?php } else{ ?>
+        
+        <h1 class="text-center mt-3">No se encontro a la persona buscada.</h1>
 
+     <?php  }
+    ?>
     <?php require_once '../templates/footer.php' ?>
 </body>
 

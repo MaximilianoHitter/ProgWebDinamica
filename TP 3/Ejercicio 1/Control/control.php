@@ -27,7 +27,7 @@ if($_FILES['archivo']['error'] <= 0){
         }else{
             echo "<div class=\"success alert alert-success\" role=\"alert\">
             El archivo ".$_FILES['archivo']['name']." se ha copiado con exito. <br>
-            Link al archivo: <a href='/TP3/Ejercicio1/archivos/".$_FILES['archivo']['name']."'> Aqui </a>
+            Link al archivo: <a href='../archivos/".$_FILES['archivo']['name']."'> Aqui </a>
             </div>";
             /* echo "El archivo ".$_FILES['archivo']['name']." se ha copiado con exito <br>\";
             echo ""; */
