@@ -28,6 +28,10 @@
         <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../buscarPersona/index.php">Buscar Persona</a>
     </div>
     <hr>
+    <div>
+        <a class="btn m-3" style="background-color:#563d7c; color:white;" href="listaPersonas.php">Listar Personas</a>
+    </div>
+    <hr>
 
     <?php require_once '../templates/footer.php'; ?>
 </body>
