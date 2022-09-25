@@ -18,13 +18,6 @@ if($ctrlNewPeople->buscarPorDni($datos['inputDniDuenio']) != null){
     }
 };
 
-if($resp){
-    $mensaje = "El alta del auto se registró correctamente";
-}else{
-    $mensaje = 'Algo salió mal. La persona dueña del auto debe estar registrada antes de crear el Auto.';
-}
-
-
 
 ?>
 
@@ -42,8 +35,20 @@ if($resp){
     <title>Document</title>
 </head>
 <body>
-    <?php require_once '../templates/header.php' ?>
-        <?php echo $mensaje ?>
-    <?php require_once '../templates/footer.php' ?>
+    <?php require_once '../templates/header.php';
+    if($resp){ ?>
+        <div class="alert alert-success" role="alert">
+            El alta del auto se registró correctamente!
+        </div>
+    
+    <?php }else{?>
+            <div class="alert alert-danger" role="alert">
+                Algo salió mal. La persona dueña del auto debe estar registrada antes de crear el Auto
+            </div>
+    
+            <?php }?>
+
+
+<?php require_once '../templates/footer.php' ?>
 </body>
 </html>
