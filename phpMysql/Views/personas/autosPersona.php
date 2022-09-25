@@ -19,7 +19,7 @@
     <h3><p class= "titulos text-center bienvenida">INGRESE EL DNI DE LA PERSONA A CONSULTAR</p></h3>
     
     <div>
-        <form action="../accion/accionBuscarAuto.php" method="POST">
+        <form action="../accion/accionDniConAuto.php" method="POST">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
                 <label for="patente">DNI a buscar</label>
