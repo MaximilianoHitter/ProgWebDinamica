@@ -43,11 +43,11 @@
                 <label for="inputNombre">Nombre</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="date" class="form-control" name="inputFechaNac" id="inputFechaNac" placeholder="Fecha nacimiento">
-                <label for="inputFechaNac">Fecha de nacimiento</label>
+                <input type="text" class="form-control" name="inputFechaNac" id="inputFechaNac" placeholder="Fecha nacimiento dd/mm/aaaa">
+                <label for="inputFechaNac">Fecha de nacimiento (dd/mm/aaaa)</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="inputTelefono" id="inputTelefono" placeholder="Numero de telefono">
+                <input type="number" class="form-control" name="inputTelefono" id="inputTelefono" step=1 min=0 placeholder="Numero de telefono">
                 <label for="inputTelefono">Telefono</label>
             </div>
             <div class="form-floating mb-3">
@@ -56,14 +56,14 @@
             </div>
             <div class="mb-3">
                 <input type="hidden" name="accion" id="accion" value="nuevo">
-                <input id="btnViewPeople" class="p-2" type="submit" value="Enviar">
+                <input id="btnViewPeople" class="p-2" type="submit" value="Enviar" disabled>
                 <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
             </div>
            
             
         </form>
-    </div>
-
+    </div> 
+    <script src="../../Public/jsPuro/personasIndex.js"></script>
     <?php require_once '../templates/footer.php' ?>
 </body>
 </html>

@@ -38,7 +38,7 @@
 
             <div class="form-floating mb-3">
                 
-                <input class="form-control" type="text" name="inputDniDuenio" id="inputDniDuenio" placeholder="Dni Dueño">
+                <input class="form-control" type="number" name="inputDniDuenio" id="inputDniDuenio" placeholder="Dni Dueño">
                 <label for="inputDniDuenio">DNI Dueño</label>
             </div>
             <div class="form-floating mb-3">
