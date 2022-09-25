@@ -16,27 +16,20 @@
 <body>
     <?php require_once '../templates/header.php'; ?>
 
-    Ejercicio 3 – Crear una página "listaPersonas.php" que muestre un listado con las personas que se
-encuentran cargadas y un link a otra página “autosPersona.php” que recibe un dni de una persona y muestra
-los datos de la persona y un listado de los autos que tiene asociados. Recordar usar la capa de control antes
-generada, no se puede acceder directamente a las clases del ORM.
-
-    <h3><p class= "titulos text-center bienvenida">INGRESE EL DNI DE LA PERSONA A CONSULTAR</p></h3>
+    <h3><p class= "titulos text-center bienvenida">LISTADO DE TODOS LAS PERSONAS REGISTRADAS</p></h3>
     
     <div>
-        <form action="../accion/accionBuscarAuto.php" method="POST">
+        <form action="autosPersona.php" method="POST">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
-                <label for="patente">DNI a buscar</label>
-                <input type="hidden" name="accion" id="accion" value="buscarAutos">
-                <input class="btn m-3 p-2 text-center" id="botonSubmit" style="background-color: #563d7c; color:white;" type="submit" value="Buscar auto" disabled>
-                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../autos/index.php">Volver</a>
+                
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/autosPersona.php">Buscar autos asociados</a>
+                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
+                
             </div>
         </form>
     </div>
-    <hr>
-    <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/autosPersona.php">Buscar autos asociados</a>
-    <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
+    
+    
     <?php require_once '../templates/footer.php'; ?>
 </body>
 
