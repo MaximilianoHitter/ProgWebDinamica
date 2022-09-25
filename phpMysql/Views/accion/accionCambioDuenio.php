@@ -3,15 +3,18 @@
 include_once '../../config.php';
 
 $datos = data_submitted();
+//print_r($datos);
+//die(); info guardada correctam
 $resp = false;
 
-$objCtrlPersona = new PersonaControl();
+//$objCtrlPersona = new PersonaControl(); //probamos de deshabilitarla pa ver si funciona...ademas 
 $objCtrlAuto = new AutoControl();
+//print_r($objCtrlAuto);
+//die();
 
-if ($objCtrlAuto->cambiarDuenio($datos)) {
+if($objCtrlAuto->cambiarDuenio($datos)){
     $resp = true;
 };
-
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +36,16 @@ if ($objCtrlAuto->cambiarDuenio($datos)) {
     <?php require_once '../templates/header.php' ?>
 
     <?php
-    if($resp) { ?>
-        <h1 class="m-3">Duenio cambiado</h1>
+    if($resp){ ?>
+        <div class="alert alert-success" role="alert">
+            Dueño modificado!
+        </div>
+        
    <?php }else{ ?>
-       <h1 class="m-3">No se pudo cambiar</h1>
+            <div class="alert alert-danger" role="alert">
+                 No se pudo cambiar! Verifique que la patente o el DNI del nuevo dueño exista en el registro.
+            </div>
+       
    <?php }
     ?>
 

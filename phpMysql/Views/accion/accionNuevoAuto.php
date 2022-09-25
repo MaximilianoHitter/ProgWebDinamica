@@ -19,9 +19,9 @@ if($ctrlNewPeople->buscarPorDni($datos['inputDniDuenio']) != null){
 };
 
 if($resp){
-    $mensaje = "El alta del auto se ingresó correctamente";
+    $mensaje = "El alta del auto se registró correctamente";
 }else{
-    $mensaje = 'Algo salio mal. La persona dueña del auto debe estar registrada antes de crear el Auto.';
+    $mensaje = 'Algo salió mal. La persona dueña del auto debe estar registrada antes de crear el Auto.';
 }
 
 

@@ -18,11 +18,11 @@
     <div class='m-3' id="contenedorForm">
         <form action="../accion/accionCambioDuenio.php" method="post">
             <div class="form-floating mb-3">
-                <input class="form-control" type="text" name="inputPatente" id="inputPatente">
+                <input class="form-control" type="text" name="inputPatente" id="inputPatente" placeholder="Patente">
                 <label for="inputPatente">La patente</label>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" type="number" name="inputDni" id="inputDni">
+                <input class="form-control" type="number" name="inputDni" id="inputDni" placeholder="Dni Nuevo Dueño">
                 <label for="inputDni">El DNI del nuevo dueño</label>
             </div>
             <div class="form-floating mb-3">

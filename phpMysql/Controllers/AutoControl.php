@@ -153,7 +153,7 @@ class AutoControl extends Controller
 
     public function obtenerPorPatente($patente)
     {
-        $sql = 'patente = "' . $patente . '";';
+        $sql = 'Patente = "' . $patente . '";';
         $lista = null;
         $objAuto = new Auto();
         if ($objAuto->listar($sql)) {
@@ -192,8 +192,12 @@ class AutoControl extends Controller
         $resp = false;
         $ctrlPersona = new PersonaControl();
         $persona = $ctrlPersona->buscarPorDni($datos['inputDni']);
+        //if(isset($persona)){
+            //echo "estré";
+       // }
+        //print_r($persona);
         $auto = $this->obtenerPorPatente($datos['inputPatente']);
-        if (count($persona) > 0 and count($auto) > 0) {
+        if (count($persona) > 0 && count($auto) > 0) {
             $auto[0]->setDniDuenio($datos['inputDni']);
             if ($auto[0]->modificar()) {
                 $resp = true;

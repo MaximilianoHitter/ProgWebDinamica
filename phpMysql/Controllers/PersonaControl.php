@@ -130,12 +130,21 @@ class PersonaControl extends Controller{
       * @return array // de objetos 
       */
      public function buscarPorDni($dni){
-        $sql = 'NroDni = "'.$dni.'";';
+        //se cambio de 'NroDni' a 'DniDuenio'
+        $sql = 'DniDuenio = "'.$dni.'";';
+        echo $sql;
+        die();
         $persona = null;
         $objPersona = new Persona();
+        $array = $objPersona->listar($sql);
+        if(count($array >0)){
+            $persona = $array;
+        }
+        /* COMO LO TENIA JERO
         if(count($objPersona->listar($sql)) > 0){
             $persona = $objPersona->listar($sql);
         }
+        */
         return $persona;
      }
 
