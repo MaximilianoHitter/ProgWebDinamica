@@ -15,26 +15,31 @@
 
 <body>
     <?php include_once '../templates/header.php' ?>
+    
     <div class="containerForm m-3 p-2" id="contenedorForm">
         <form action="../accion/accionNuevoAuto.php" method="post">
             <div class="form-floating mb-3">
+                
+                <input class="form-control" type="text" name="inputPatente" id="inputPatente" placeholder="Patente">
                 <label for="inputPatente">Patente</label>
-                <input class="form-control" type="text" name="inputPatente" id="inputPatente">
             </div>
 
             <div class="form-floating mb-3">
+                
+                <input class="form-control" type="text" name="inputMarca" id="inputMarca" placeholder="Marca">
                 <label for="inputMarca">Marca</label>
-                <input class="form-control" type="text" name="inputMarca" id="inputMarca">
             </div>
 
             <div class="form-floating mb-3">
+                
+                <input class="form-control" type="number" name="inputModelo" step="1" min=0 id="inputModelo" placeholder="Modelo">
                 <label for="inputModelo">Modelo</label>
-                <input class="form-control" type="number" name="inputModelo" step="1" min=0 id="inputModelo">
             </div>
 
             <div class="form-floating mb-3">
+                
+                <input class="form-control" type="text" name="inputDniDuenio" id="inputDniDuenio" placeholder="Dni Dueño">
                 <label for="inputDniDuenio">DNI Dueño</label>
-                <input class="form-control" type="text" name="inputDniDuenio" id="inputDniDuenio">
             </div>
             <div class="form-floating mb-3">
                 <input class="btn" style="background-color: #563d7c; color:white;" type="submit" value="Agregar" id="botonSubmit" disabled>

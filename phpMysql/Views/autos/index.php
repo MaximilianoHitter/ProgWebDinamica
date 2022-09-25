@@ -19,33 +19,36 @@
     
     <h3><p class= "titulos text-center bienvenida">AUTOS</p></h3>
 
-    <hr>
-    <form action="../accion/verAutos.php" method="POST">
-        <input type="hidden" name="accion" id="accion" value="verAutos">
-        <input class="btn m-3 p-2 text-center" style="background-color: #563d7c; color:white;" type="submit" value="Ver Autos">
-    </form>
-    <hr>
+    <div>
+        <hr>
+        <form action="../accion/verAutos.php" method="POST">
+            <input type="hidden" name="accion" id="accion" value="verAutos">
+            <input class="btn m-3 p-2 text-center" style="background-color: #563d7c; color:white;" type="submit" value="Ver Autos">
+        </form>
+        <hr>
 
 
-    <a class="btn m-3" href="../buscarAuto/index.php" style="background-color: #563d7c; color:white;">Buscar autos</a>
-    <!-- <form action="../accion/accionBuscarAuto.php" method="POST">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
-            <label for="patente">Patente</label>
-            <input type="hidden" name="accion" id="accion" value="buscarAutos">
-            <input class="btn m-3 p-2 text-center" style="background-color: #EB5E0B; color:white;" type="submit" value="Buscar autos">
+        <a class="btn m-3 p-2 text-center" href="../buscarAuto/index.php" style="background-color: #563d7c; color:white;">Buscar autos</a>
+        <!-- <form action="../accion/accionBuscarAuto.php" method="POST">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
+                <label for="patente">Patente</label>
+                <input type="hidden" name="accion" id="accion" value="buscarAutos">
+                <input class="btn m-3 p-2 text-center" style="background-color: #EB5E0B; color:white;" type="submit" value="Buscar autos">
+            </div>
+        </form> -->
+        <hr>
+
+        <div>
+            <a class="btn m-3 p-2 text-center" style="background-color: #563d7c; color:white;" href="../nuevoAuto/index.php">Cargar nuevo auto</a>
+        
         </div>
-    </form> -->
-    <hr>
+        <hr>
 
-    <div>
-        <a class="btn" style="background-color: #563d7c; color:white;" href="../nuevoAuto/index.php">Cargar nuevo auto</a>
-    
-    </div>
-    <hr>
+        <div>
+            <a class="btn m-3 p-2 text-center" style="background-color: #563d7c; color:white;" href="../cambiarDuenio/index.php">Cambiar dueño</a>
+        </div>
 
-    <div>
-        <a class="btn m-3" style="background-color: #563d7c; color:white;" href="../cambiarDuenio/index.php">Cambiar dueño</a>
     </div>
 
     <?php require_once '../templates/footer.php'; ?>
