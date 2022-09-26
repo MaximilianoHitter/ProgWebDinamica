@@ -225,4 +225,6 @@ class Db extends PDO{
 
 }
 
+$db = new Db();
+
 ?>

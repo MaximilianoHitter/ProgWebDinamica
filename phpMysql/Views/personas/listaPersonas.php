@@ -1,3 +1,10 @@
+<?php
+    require_once('../../config.php');
+    $objPersona = new PersonaControl();
+    $arrayPersonas = $objPersona->buscar( null );
+    $objAuto = new AutoControl();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,16 +24,45 @@
     <?php require_once '../templates/header.php'; ?>
 
     <h3><p class= "titulos text-center bienvenida">LISTADO DE TODOS LAS PERSONAS REGISTRADAS</p></h3>
-    
-    <div>
-        <form action="autosPersona.php" method="POST">
-            <div class="form-floating mb-3">
-                
-                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/autosPersona.php">Buscar autos asociados</a>
-                <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
-                
+    <div class="container-fluid">
+        <div class="container col-md-12">
+            <div class="mb-3">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Teléfono</th>
+                        <th>Domicilio</th>
+                        <th></th>
+                    </tr>
+                    <?php
+                        if( isset($arrayPersonas) ){
+                            foreach( $arrayPersonas as $persona ){
+                                echo '<tr>';
+                                echo '<td>' .$persona->getNombre(). '</td>';
+                                echo '<td>' .$persona->getApellido(). '</td>';
+                                echo '<td>' .$persona->getNroDni(). '</td>';
+                                echo '<td>' .$persona->getFechaNac(). '</td>';
+                                echo '<td>' .$persona->getTelefono(). '</td>';
+                                echo '<td>' .$persona->getDomicilio(). '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<p class="lead"> La búsqueda no arrojó resultados </p>';
+                        }
+                    ?>
+                </table>
             </div>
-        </form>
+        </div>
+    </div>
+    
+    <div class="d-flex p-2 justify-content-center m-3">
+        <div class="form-floating mb-3"> 
+            <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/autosPersona.php">Buscar autos asociados</a>
+            <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/index.php">Volver</a>
+        </div>
     </div>
     
     

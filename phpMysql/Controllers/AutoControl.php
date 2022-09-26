@@ -16,6 +16,23 @@ class AutoControl extends Controller
         $this->view->render('autos/index');
     }
 
+    public function buscar( $param ){
+        $where = " true ";
+        if( $param != null ){
+            if ( isset($param['Patente']) ){
+                $where .= " and patente = '" . $param['Patente'] . "'";
+            } if ( isset($param['Marca']) ){
+                $where .= " and marca = '" . $param['Marca'] . "'";
+            } if ( isset($param['Modelo']) ){
+                $where .= " and modelo ='" . $param['Modelo'] . "'";
+            } if ( isset($param['DniDuenio']) ){
+                $where .= " and dni_duenio = '" . $param['DniDuenio'] . "'";
+            }
+        }
+        $array = Auto::listar( $where );
+        return $array;
+    }
+
     public function listar()
     {
         $lista = '';
@@ -210,5 +227,14 @@ class AutoControl extends Controller
             };
         }
         return $resp;
+    }
+
+    public function buscarDueño( $p ){
+        $query = " ";
+        if( isset($p) ){
+            $query = "DniDuenio = " .$p['NroDni'];
+            $arrayAutos = Auto::listar( $query );
+        }
+        return $arrayAutos;
     }
 }

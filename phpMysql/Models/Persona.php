@@ -102,77 +102,76 @@ class Persona{
         return $resp;
         }
     
-        public function insertar(){
-            $resp = false;
-            $base = new Db();
-            $sql = 'INSERT INTO persona VALUES("'.$this->getNroDni().'","'.$this->getApellido().'","'.$this->getNombre().'","'.$this->getFechaNac().'","'.$this->getTelefono().'","'.$this->getDomicilio().'");';
-            if($base->Iniciar()){
-                if($elid = $base->Ejecutar($sql)){
-                    $this->setNroDni($elid);
-                    $resp = true;
-                }else{
-                    $this->setMensajeOp('Persona->insertar: '.$base->getError());
-                }
+    public function insertar(){
+        $resp = false;
+        $base = new Db();
+        $sql = 'INSERT INTO persona VALUES("'.$this->getNroDni().'","'.$this->getApellido().'","'.$this->getNombre().'","'.$this->getFechaNac().'","'.$this->getTelefono().'","'.$this->getDomicilio().'");';
+        if($base->Iniciar()){
+            if($elid = $base->Ejecutar($sql)){
+                $this->setNroDni($elid);
+                $resp = true;
             }else{
                 $this->setMensajeOp('Persona->insertar: '.$base->getError());
             }
-            return $resp;
+        }else{
+            $this->setMensajeOp('Persona->insertar: '.$base->getError());
         }
+        return $resp;
+    }
 
-        public function modificar(){
-            $resp = false;
-            $base = new Db();
-            $sql = 'UPDATE persona SET Apellido = "'.$this->getApellido().'", Nombre = "'.$this->getNombre().'", fechaNac = "'.$this->getFechaNac().'", Telefono = "'.$this->getTelefono().'", Domicilio = "'.$this->getDomicilio().'" WHERE NroDni = '.$this->getNroDni().';';
-            if($base->Iniciar()){
-                if($base->Ejecutar($sql)){
-                    $resp = true;
-                }else{
-                    $this->setMensajeOp("Persona->modificar: ".$base->getError());
-                }
+    public function modificar(){
+        $resp = false;
+        $base = new Db();
+        $sql = 'UPDATE persona SET Apellido = "'.$this->getApellido().'", Nombre = "'.$this->getNombre().'", fechaNac = "'.$this->getFechaNac().'", Telefono = "'.$this->getTelefono().'", Domicilio = "'.$this->getDomicilio().'" WHERE NroDni = '.$this->getNroDni().';';
+        if($base->Iniciar()){
+            if($base->Ejecutar($sql)){
+                $resp = true;
             }else{
                 $this->setMensajeOp("Persona->modificar: ".$base->getError());
             }
-            return $resp;
+        }else{
+            $this->setMensajeOp("Persona->modificar: ".$base->getError());
         }
+        return $resp;
+    }
 
-        public function eliminar(){
-            $resp = false;
-            $base = new Db();
-            $sql = "DELETE FROM Persona WHERE NroDni = ".$this->getNroDni();
-            if($base->Iniciar()){
-                if($base->Ejecutar($sql)){
-                    $resp = true;
-                }else{
-                    $this->setMensajeOp("Persona->eliminar: ".$base->getError());
-                }
+    public function eliminar(){
+        $resp = false;
+        $base = new Db();
+        $sql = "DELETE FROM Persona WHERE NroDni = ".$this->getNroDni();
+        if($base->Iniciar()){
+            if($base->Ejecutar($sql)){
+                $resp = true;
             }else{
                 $this->setMensajeOp("Persona->eliminar: ".$base->getError());
             }
-            return $resp;
+        }else{
+            $this->setMensajeOp("Persona->eliminar: ".$base->getError());
         }
+        return $resp;
+    }
 
-        public static function listar($parametro = ""){
-            $arreglo = array();
-            $base = new Db();
-            $sql = "SELECT * FROM Persona ";
-            if($parametro != ""){
-                $sql.="WHERE ".$parametro;
-            }
-            $res = $base->Ejecutar($sql);
-            if($res>-1){
-                if($res>0){
-                    while($row = $base->Registro()){
-                        $obj = new Persona();
-                        $obj->setear($row['NroDni'], $row['Apellido'], $row["Nombre"], $row['fechaNac'], $row['Telefono'],$row['Domicilio']);
-                        array_push($arreglo, $obj);
-                    }
+    public static function listar($parametro = ""){
+        $arreglo = array();
+        $base = new Db();
+        $sql = "SELECT * FROM Persona ";
+        if($parametro != ""){
+            $sql.="WHERE ".$parametro;
+        }
+        $res = $base->Ejecutar($sql);
+        if($res>-1){
+            if($res>0){
+                while($row = $base->Registro()){
+                    $obj = new Persona();
+                    $obj->setear($row['NroDni'], $row['Apellido'], $row["Nombre"], $row['fechaNac'], $row['Telefono'],$row['Domicilio']);
+                    array_push($arreglo, $obj);
                 }
-            }else{
-                //$this->setMensajeOp("Persona->listar: ".$base->getError());
             }
-            return $arreglo;
+        }else{
+            //$this->setMensajeOp("Persona->listar: ".$base->getError());
         }
-
+        return $arreglo;
+    }
 
 }
 

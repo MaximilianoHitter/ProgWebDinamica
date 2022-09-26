@@ -150,6 +150,23 @@ class Auto{
             }
             return $arreglo;
         }
+    
+    public function buscar( $param ){
+        $where = " true ";
+        if( $param != null ){
+            if ( isset($param['Patente']) ){
+                $where .= " and patente = '" . $param['Patente'] . "'";
+            } if ( isset($param['Marca']) ){
+                $where .= " and marca = '" . $param['Marca'] . "'";
+            } if ( isset($param['Modelo']) ){
+                $where .= " and modelo ='" . $param['Modelo'] . "'";
+            } if ( isset($param['DniDuenio']) ){
+                $where .= " and dni_duenio = '" . $param['DniDuenio'] . "'";
+            }
+        }
+        $array = Auto::listar( $where );
+        return $array;
+    }
 
 }
 

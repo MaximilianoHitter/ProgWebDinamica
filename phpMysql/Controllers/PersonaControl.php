@@ -140,6 +140,26 @@ class PersonaControl extends Controller
         return $resp;
     }
 
+    public function buscar( $param ){
+        $where = " true ";
+        if( $param <> null ){
+            if ( isset($param['NroDni']) ){
+                $where .= " and nro_dni = '" . $param['NroDni'] . "'";
+            } if ( isset($param['nombre']) ){
+                $where .= " and nombre = '" . $param['Nombre'] . "'";
+            } if ( isset($param['apellido']) ){
+                $where .= " and apellido = '" . $param['Apellido'] . "'";
+            } if ( isset($param['fechaNac']) ){
+                $where .= " and fecha_nac = '" . $param['fechaNac'] . "'";
+            } if ( isset($param['Telefono']) ){
+                $where .= " and telefono = '" . $param['Telefono'] . "'";
+            } if ( isset($param['Domicilio']) ){
+                $where .= " and domicilio = '" . $param['Domicilio'] . "'";
+            }
+        }
+        $array = Persona::listar( $where );
+        return $array;
+    }
 
     /**
      * Buscamos a un persona por su numero de documento

@@ -20,10 +20,10 @@
     
     <div>
         <form action="../accion/accionDniConAuto.php" method="POST">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control w-50 m-2" id="patente" name="patente" placeholder="Patente">
+            <div class="form-floating d-flex p-2 justify-content-center m-3">
+                <input type="number" class="form-control " id="NroDni" name="NroDni" placeholder="Patente">
                 <label for="patente">DNI a buscar</label>
-                <input class="btn m-3" style="background-color: #563d7c; color:white;" type="submit" value="Buscar autos asociados" id="botonSubmit" disabled>
+                <input class="btn m-3" style="background-color: #563d7c; color:white;" type="submit" value="Buscar autos asociados" id="boton" disabled>
                 <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/listaPersonas.php">Volver</a>
                 
             </div>
@@ -32,6 +32,7 @@
     
     
     <?php require_once '../templates/footer.php'; ?>
+    <script src="../../Public/jsPuro/buscarDni.js"></script>
 </body>
 
 </html>

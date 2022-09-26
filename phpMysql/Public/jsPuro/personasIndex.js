@@ -8,6 +8,7 @@ const domicilio = document.getElementById('inputDomicilio');
 
 //boton
 const boton = document.getElementById('btnViewPeople');
+const botonSubmit = document.getElementById('botonSubmit');
 
 let validacion = [];
 validacion['dni'] = false;
@@ -202,3 +203,10 @@ domicilio.addEventListener('change', (e)=>{
         cambiarEstado();
     }
 })
+
+/* botonSubmit.addEventListener('change', (e) => {
+    let valor = e.target.value;
+    if( valor.length >= 7 && valor.lenght <= 8 ){
+        botonSubmit.disabled = false;
+    }
+}) */
