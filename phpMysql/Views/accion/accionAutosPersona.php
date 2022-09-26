@@ -35,26 +35,32 @@
 
     <div class="d-flex justify-content-center m-3">
         <div class="col-md-12">
-            <h2 class="d-flex justify-content-center">DNI Consultado: </h2>
+            <h2 class="d-flex justify-content-center">DNI Consultado: <?php echo $data['NroDni']; ?></h2>
             <div class="mb-3">
                 <table class="table table-striped">
-                    <tr>
-                        <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Telefono</th>
-                        <th>Domicilio</th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td><?php echo $objPersonaEncontrada->getNroDni(); ?></td>
-                        <td><?php echo $objPersonaEncontrada->getNombre(); ?></td>
-                        <td><?php echo $objPersonaEncontrada->getApellido(); ?></td>
-                        <td><?php echo $objPersonaEncontrada->getFechaNac(); ?></td>
-                        <td><?php echo $objPersonaEncontrada->getTelefono(); ?></td>
-                        <td><?php echo $objPersonaEncontrada->getDomicilio(); ?></td>
-                    </tr>
+                    
+                        <?php
+                            if( count($personasArray) > 0 ){
+                                echo '<tr>';
+                                echo '<th>Nombre</th>';
+                                echo '<th>Apellido</th>';
+                                echo '<th>Fecha de nacimiento</th>';
+                                echo '<th>Telefono</th>';
+                                echo '<th>Domicilio</th>';
+                                echo '<th></th>';
+                                echo '</tr>';
+                                echo '<tr>';
+                                echo '<td>' .$objPersonaEncontrada->getNombre(). '</td>';
+                                echo '<td>' .$objPersonaEncontrada->getApellido(). '</td>';
+                                echo '<td>' .$objPersonaEncontrada->getFechaNac(). '</td>';
+                                echo '<td>' .$objPersonaEncontrada->getTelefono(). '</td>';
+                                echo '<td>' .$objPersonaEncontrada->getDomicilio(). '</td>';
+                                echo '</tr>';
+                            } else {
+                                echo '<p class="d-flex justify-content-center m-3 lead">La persona ingresada no posee ningún auto. Se salvó de pagar impuestos!</p>';
+                            }
+                        ?>
+
                 </table>
             </div>
             <div class="mb-3">
