@@ -2,18 +2,16 @@
 
 //require_once 'Models/Auto.php';
 
-class AutoControl extends Controller
-{
-    public function __construct()
-    {
+class AutoControl extends Controller {
+
+    public function __construct() {
         parent::__construct();
         // $this->autoObj = new Auto();
         // $this->view->auto = $this->listar();
     }
 
-    function render()
-    {
-        $this->view->render('autos/index');
+    function render() {
+        $this->view->render( 'autos/index' );
     }
 
     public function buscar( $param ){
@@ -33,8 +31,7 @@ class AutoControl extends Controller
         return $array;
     }
 
-    public function listar()
-    {
+    public function listar() {
         $lista = '';
         $objAuto = new Auto();
         $arrayAutos = $objAuto->listar();
@@ -48,24 +45,21 @@ class AutoControl extends Controller
         //return $this->autoObj->listar();
     }
 
-    public function insertar($datos)
-    {
+    public function insertar( $datos ){
         $resp = null;
         $modeloAuto = new Auto();
         $modeloPersona = new PersonaControl();
         $autoPatente = $this->obtenerPorPatente($datos['inputPatente']);
-        if($autoPatente == null){
-            if ($modeloPersona->buscarPorDni($datos['inputDniDuenio'])) {
-                $modeloAuto->setear($datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio']);
-                if ($modeloAuto->insertar()) {
+        if( $autoPatente == null ){
+            if( $modeloPersona->buscarPorDni($datos['inputDniDuenio']) ){
+                $modeloAuto->setear( $datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio'] );
+                if( $modeloAuto->insertar() ){
                     $resp = true;
                 }
             };
-        }else if(count($autoPatente) > 0){
+        } else if( count($autoPatente) > 0 ){
             $resp = false;
         }
-        
-
         return $resp;
     }
 
@@ -75,11 +69,10 @@ class AutoControl extends Controller
      * @param array $param
      * @return Persona
      */
-    private function cargarObjeto($param)
-    {
+    private function cargarObjeto( $param ){
         $obj = null;
 
-        if (array_key_exists('inputId', $param) and array_key_exists('inputDniDuenio', $param)) {
+        if( array_key_exists('inputId', $param) and array_key_exists('inputDniDuenio', $param) ){
             $obj = new Auto();
             $obj->setear($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
         }
@@ -91,11 +84,8 @@ class AutoControl extends Controller
      * @param array $param
      * @return Auto
      */
-
-    private function cargarObjetoConClave($param)
-    {
+    private function cargarObjetoConClave( $param ){
         $obj = null;
-
         if (isset($param['inputId'])) {
             $obj = new Auto();
             $obj->setear($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
@@ -108,8 +98,7 @@ class AutoControl extends Controller
      * @param array $param
      * @return boolean
      */
-    public function alta($param)
-    {
+    public function alta( $param ){
         $resp = false;
         //$param['inputDni'] = null;
         $elObjAuto = $this->cargarObjeto($param);
@@ -125,9 +114,7 @@ class AutoControl extends Controller
      * @param array $param
      * @return boolean
      */
-
-    private function seteadosCamposClaves($param)
-    {
+    private function seteadosCamposClaves( $param ){
         $resp = false;
         if (isset($param['inputId'])) {
             $resp = true;
@@ -140,12 +127,11 @@ class AutoControl extends Controller
      * @param array $param
      * @return boolean
      */
-    public function baja($param)
-    {
+    public function baja( $param ){
         $resp = false;
-        if ($this->seteadosCamposClaves($param)) {
-            $elObjAuto = $this->cargarObjetoConClave($param);
-            if ($elObjAuto != null and $elObjAuto->eliminar()) {
+        if( $this->seteadosCamposClaves($param) ){
+            $elObjAuto = $this->cargarObjetoConClave( $param );
+            if( $elObjAuto != null and $elObjAuto->eliminar() ){
                 $resp = true;
             }
         }
@@ -157,13 +143,11 @@ class AutoControl extends Controller
      * @param array $param
      * @return boolean
      */
-
-    public function modificacion($datos)
-    {
+    public function modificacion( $datos ){
         $resp = false;
-        if ($this->seteadosCamposClaves($datos)) {
-            $elObjAuto = $this->cargarObjeto($datos);
-            if ($elObjAuto != null and $elObjAuto->modificar()) {
+        if( $this->seteadosCamposClaves($datos) ){
+            $elObjAuto = $this->cargarObjeto( $datos );
+            if( $elObjAuto != null and $elObjAuto->modificar() ){
                 $resp = true;
             }
         }
@@ -173,14 +157,12 @@ class AutoControl extends Controller
     /**
      * Creamos un obj persona para obtener los datos del duenio del auto
      */
-
-    public function obtenerPorPatente($patente)
-    {
+    public function obtenerPorPatente( $patente ){
         $sql = 'Patente = "' . $patente . '";';
         $lista = null;
         $objAuto = new Auto();
-        if ($objAuto->listar($sql)) {
-            $lista = $objAuto->listar($sql);
+        if( $objAuto->listar($sql) ){
+            $lista = $objAuto->listar( $sql );
         }
         return $lista;
     }
@@ -188,18 +170,16 @@ class AutoControl extends Controller
     /** Relacionamos el auto con los datos de su duenio, class Persona()
      * Nos devuelve un array asociativo
      * @return array
-     *  */
-
-    public function obtenerInfo()
-    {
+    */
+    public function obtenerInfo() {
         $lista = null;
         $objPersona = new Persona();
         $objAuto = new Auto();
         $arrayObjAutos = $objAuto->listar();
         $arrayObjPersonas = $objPersona->listar();
-        foreach ($arrayObjPersonas as $clave) {
-            foreach ($arrayObjAutos as $key) {
-                if ($clave->getNroDni() == $key->getDniDuenio()) {
+        foreach( $arrayObjPersonas as $clave ){
+            foreach( $arrayObjAutos as $key ){
+                if( $clave->getNroDni() == $key->getDniDuenio() ){
                     $lista[] = array(
                         'duenio' => $clave,
                         'auto' => $key
@@ -210,19 +190,18 @@ class AutoControl extends Controller
         return $lista;
     }
 
-    public function cambiarDuenio($datos)
-    {
+    public function cambiarDuenio( $datos ){
         $resp = false;
         $ctrlPersona = new PersonaControl();
-        $persona = $ctrlPersona->buscarPorDni($datos['inputDni']);
+        $persona = $ctrlPersona->buscarPorDni( $datos['inputDni'] );
         //if(isset($persona)){
             //echo "estré";
-       // }
+        // }
         //print_r($persona);
-        $auto = $this->obtenerPorPatente($datos['inputPatente']);
-        if (count($persona) > 0 && count($auto) > 0) {
-            $auto[0]->setDniDuenio($datos['inputDni']);
-            if ($auto[0]->modificar()) {
+        $auto = $this->obtenerPorPatente( $datos['inputPatente'] );
+        if( count($persona) > 0 && count($auto) > 0 ){
+            $auto[0]->setDniDuenio( $datos['inputDni'] );
+            if( $auto[0]->modificar() ){
                 $resp = true;
             };
         }
@@ -237,4 +216,5 @@ class AutoControl extends Controller
         }
         return $arrayAutos;
     }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
-class Db extends PDO{
+class Db extends PDO {
+    // Atributos
     private $engine;
     private $host;
     private $database;
@@ -11,8 +12,7 @@ class Db extends PDO{
     private $indice;
     private $resultado;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->engine = 'mysql';
         $this->host = 'localhost';
         $this->database = 'infoautos';
@@ -24,69 +24,52 @@ class Db extends PDO{
         $this->indice = 0;
 
         $dns = $this->engine.':dbname='.$this->database.';host='.$this->host;
-        try{
+        try {
             parent::__construct($dns, $this->user, $this->pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
             $this->conect = true;
-        }catch(PDOException $e){
+        } catch( PDOException $e ){
             $this->sql = $e->getMessage();
             $this->conect = false;
         }
     }
 
-    public function getConect(){
+    public function getConect() {
         return $this->conect;
     }
 
-    public function setConect($conect){
+    public function setConect( $conect ){
         $this->conect = $conect;
     }
 
-    public function getDebug(){
+    public function getDebug() {
         return $this->debug;
     }
 
-    public function setDebug($debug){
+    public function setDebug( $debug ){
         $this->debug = $debug;
     }
 
-    /**
-     * Funcion que setea la variable instancia error
-     */
-    public function setError($e){ 
+    public function setError( $e ){ 
         $this->error = $e;  
     }
         
-    /**
-     * Funcion que retorna una cadena con descripcion del ultimo error seteado
-     * @return 
-     */
-    public function getError(){
-        return "\n".$this->error;
-        
+    public function getError() {
+        return "\n".$this->error;  
     }
 
-    /**
-     * Funcion que setea la variable instancia sql
-     */
-    public function setSQL($e){
-        return "\n".$this->sql = $e;
-        
+    public function setSQL( $e ){
+        return "\n".$this->sql = $e;  
     }
     
-    /**
-     * Funcion que retorna una cadena con el ultimo sql seteado
-     * @return
-     */
-    public function getSQL(){
-        return "\n".$this->sql;
-        
+    public function getSQL() {
+        return "\n".$this->sql; 
     }
 
-    public function getIndice(){
+    public function getIndice() {
         return $this->indice;
     }
 
-    public function setIndice($indice){
+    public function setIndice( $indice ){
         $this->indice = $indice;
     }
 
@@ -94,55 +77,52 @@ class Db extends PDO{
         return $this->resultado;
     }
 
-    public function setResultado($resultado){
+    public function setResultado( $resultado ){
         $this->resultado = $resultado;
     }
 
-       /**
+    /**
      * Inicia la coneccion con el Servidor y la  Base Datos Mysql.
      * Retorna true si la coneccion con el servidor se pudo establecer y false en caso contrario
-     *
      * @return boolean
      */
-
     public function Iniciar(){
         return $this->getConect();
-     }
+    }
 
-    public function Ejecutar($sql){
-        $this->setError('');
-        $this->setSQL($sql);
+    public function Ejecutar( $sql ){
+        $this->setError( '' );
+        $this->setSQL( $sql );
 
         // Se desea INSERT
-        if(stristr($sql, 'INSERT')){
+        if( stristr($sql, 'INSERT') ){
             $resp = $this->EjecutarInsert($sql);
         }
 
         // Se desea UPDATE o DELETE
-        if(stristr($sql, 'UPDATE') OR stristr($sql, 'DELETE')){
+        if( stristr($sql, 'UPDATE') OR stristr($sql, 'DELETE') ){
             $resp = $this->EjecutarDeleteUpdate($sql);
         }
 
         // Se desea ejercutar un SELECT
-        if(stristr($sql, 'SELECT')){
+        if( stristr($sql, 'SELECT') ){
             $resp = $this->EjecutarSelect($sql);
         }
         return $resp;
     }
 
     /**
-    *Si se inserta en una tabla que tiene una columna autoincrement se retorna el id con el que se inserto el registro
-    *caso contrario se retorna -1
+    * Si se inserta en una tabla que tiene una columna autoincrement se retorna el id con el que se inserto el registro
+    * Caso contrario se retorna -1
     */
-
-    public function EjecutarInsert($sql){
-        $resultado = parent::query($sql);
-        if(!$resultado){
+    public function EjecutarInsert( $sql ){
+        $resultado = parent::query( $sql );
+        if( !$resultado ){
             $this->analizarDebug();
             $id = 0;
-        }else{
+        } else {
             $id = $this->lastInsertId();
-            if($id == 0){
+            if( $id == 0 ){
                 $id = -1;
             }
         }
@@ -152,15 +132,13 @@ class Db extends PDO{
     /**
     * Devuelve la cantidad de filas afectadas por la ejecucion SQL. Si el valor es <0 no se pudo realizar la opercion
     * @return integer 
-    * 
     */
-
-    public function EjecutarDeleteUpdate($sql){
+    public function EjecutarDeleteUpdate( $sql ){
         $cantFilas = -1;
-        $resultado = parent::query($sql);
-        if(!$resultado){
+        $resultado = parent::query( $sql );
+        if( !$resultado ){
             $this->analizarDebug();
-        }else{
+        } else {
             $cantFilas = $resultado->rowCount();
         }
         return $cantFilas;
@@ -169,40 +147,36 @@ class Db extends PDO{
     /**
     * Retorna cada uno de los registros de una consulta select
     * @return integer
-    *
     */
-
-    public function EjecutarSelect($sql){
+    public function EjecutarSelect( $sql ){
         $cant = -1;
-        $resultado = parent::query($sql);
-        if(!$resultado){
+        $resultado = parent::query( $sql );
+        if( !$resultado ){
             $this->analizarDebug();
-        }else{
+        } else {
             $arregloResult = $resultado->fetchAll();
-            $cant = count($arregloResult);
+            $cant = count( $arregloResult );
             $this->setIndice(0);
-            $this->setResultado($arregloResult);
+            $this->setResultado( $arregloResult );
         }
         return $cant;
     }
 
     /**
     * Devuelve un registro retornado por la ejecucion de una consulta
-    * el puntero se despleza al siguiente registro de la consulta
-    *
+    * El puntero se despleza al siguiente registro de la consulta
     * @return array
     */ 
-
-    public function Registro(){
+    public function Registro() {
         $filaActual = false;
         $indiceActual = $this->getIndice();
-        if($indiceActual >= 0){
+        if( $indiceActual >= 0 ){
             $filas = $this->getResultado();
-            if($indiceActual < count($filas)){
+            if( $indiceActual < count($filas) ){
                 $filaActual = $filas[$indiceActual];
                 $indiceActual++;
                 $this->setIndice($indiceActual);
-            }else{
+            } else {
                 $this->setIndice(-1);
             }
         }
@@ -212,8 +186,7 @@ class Db extends PDO{
     /**
     * Esta funcion si esta seteado la variable instancia $this->debug visualiza el debug
     */
-
-    private function analizarDebug(){
+    private function analizarDebug() {
         $e = $this->errorInfo();
         $this->setError($e);
         if($this->getDebug()){
@@ -224,7 +197,5 @@ class Db extends PDO{
     }
 
 }
-
-$db = new Db();
 
 ?>

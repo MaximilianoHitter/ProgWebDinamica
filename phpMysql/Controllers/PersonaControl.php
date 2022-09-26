@@ -2,33 +2,28 @@
 
 //include_once 'Models/modelPersona.php';
 
-class PersonaControl extends Controller
-{
+class PersonaControl extends Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         //$this->personaObj = new Persona();
         //$this->view->personas = $this->listar();
     }
 
-    function render()
-    {
+    function render() {
         $this->view->render('personas/index');
     }
 
-    public function listar()
-    {
+    public function listar() {
         return $this->personaObj->listar();
     }
 
-    public function insertar($datos)
-    {
+    public function insertar( $datos ){
         $fecha = $datos['inputFechaNac'];
-        $fecha = explode('-', $fecha);
+        $fecha = explode( '-', $fecha );
         $fecha = $fecha[2] . "-" . $fecha[1] . "-" . $fecha[0];
         // echo $fecha."<br>";
-        $this->personaObj->setear($datos['inputDni'], $datos['inputApellido'], $datos['inputNombre'], $fecha, $datos['inputTelefono'], $datos['inputDomicilio']);
+        $this->personaObj->setear( $datos['inputDni'], $datos['inputApellido'], $datos['inputNombre'], $fecha, $datos['inputTelefono'], $datos['inputDomicilio'] );
     }
 
 
@@ -37,13 +32,12 @@ class PersonaControl extends Controller
      * @param array $param
      * @return Persona
      */
-    private function cargarObjeto($param)
-    {
+    private function cargarObjeto($param) {
         $obj = null;
         $fecha = $param['inputFechaNac'];
-        $fecha = explode('/', $fecha);
+        $fecha = explode( '/', $fecha );
         $fecha = $fecha[2] . "-" . $fecha[1] . "-" . $fecha[0];
-        if (array_key_exists('inputDni', $param)) {
+        if( array_key_exists('inputDni', $param) ){
             $obj = new Persona();
             $obj->setear($param['inputDni'], $param['inputApellido'], $param['inputNombre'], $fecha, $param['inputTelefono'], $param['inputDomicilio']);
         }
@@ -55,14 +49,12 @@ class PersonaControl extends Controller
      * @param array $param
      * @return Tabla
      */
-
-    private function cargarObjetoConClave($param)
-    {
+    private function cargarObjetoConClave( $param ){
         $obj = null;
 
-        if (isset($param['inputDni'])) {
+        if( isset($param['inputDni']) ){
             $obj = new Persona();
-            $obj->setear($param['inputDni'], $param['inputApellido'], $param['inputNombre'], $param['inputFechaNac'], $param['inputTelefono'], $param['inputDomicilio']);
+            $obj->setear( $param['inputDni'], $param['inputApellido'], $param['inputNombre'], $param['inputFechaNac'], $param['inputTelefono'], $param['inputDomicilio'] );
         }
         return $obj;
     }
@@ -72,14 +64,13 @@ class PersonaControl extends Controller
      * @param array $param
      * @return boolean
      */
-    public function alta($param)
-    {
+    public function alta( $param ){
         $resp = false;
         //$param['inputDni'] = null;
         $elObjPersona = $this->cargarObjeto($param);
         $dni = $this->buscarPorDni($param['inputDni']);
-        if ($dni == null) {
-            if ($elObjPersona != null and $elObjPersona->insertar()) {
+        if( $dni == null ){
+            if( $elObjPersona != null and $elObjPersona->insertar() ){
                 $resp = true;
             } else if (count($dni) > 0) {
                 $resp = false;
@@ -93,11 +84,9 @@ class PersonaControl extends Controller
      * @param array $param
      * @return boolean
      */
-
-    private function seteadosCamposClaves($param)
-    {
+    private function seteadosCamposClaves( $param ){
         $resp = false;
-        if (isset($param['inputDni'])) {
+        if( isset($param['inputDni']) ){
             $resp = true;
         }
         return $resp;
@@ -108,12 +97,11 @@ class PersonaControl extends Controller
      * @param array $param
      * @return boolean
      */
-    public function baja($param)
-    {
+    public function baja( $param ){
         $resp = false;
-        if ($this->seteadosCamposClaves($param)) {
-            $elObjPersona = $this->cargarObjetoConClave($param);
-            if ($elObjPersona != null and $elObjPersona->eliminar()) {
+        if( $this->seteadosCamposClaves($param) ){
+            $elObjPersona = $this->cargarObjetoConClave( $param );
+            if( $elObjPersona != null and $elObjPersona->eliminar() ){
                 $resp = true;
             } else {
                 $resp = 'No funca';
@@ -127,13 +115,11 @@ class PersonaControl extends Controller
      * @param array $param
      * @return boolean
      */
-
-    public function modificacion($datos)
-    {
+    public function modificacion( $datos ){
         $resp = false;
-        if ($this->seteadosCamposClaves($datos)) {
-            $elObjPersona = $this->cargarObjeto($datos);
-            if ($elObjPersona != null and $elObjPersona->modificar()) {
+        if( $this->seteadosCamposClaves($datos) ){
+            $elObjPersona = $this->cargarObjeto( $datos );
+            if( $elObjPersona != null and $elObjPersona->modificar() ){
                 $resp = true;
             }
         }
@@ -166,16 +152,15 @@ class PersonaControl extends Controller
      * @param string $dni
      * @return array // de objetos 
      */
-    public function buscarPorDni($dni)
-    {
+    public function buscarPorDni( $dni ){
         //se cambio de 'NroDni' a 'DniDuenio'
         $sql = 'NroDni = "' . $dni . '";';
         //echo $sql;
         //die();
         $persona = null;
         $objPersona = new Persona();
-        $array = $objPersona->listar($sql);
-        if (count($array) > 0) {
+        $array = $objPersona->listar( $sql );
+        if( count($array) > 0 ){
             $persona = $array;
         }
         /* COMO LO TENIA JERO
@@ -187,9 +172,9 @@ class PersonaControl extends Controller
     }
 
 
-    public function obtenerError()
-    {
+    public function obtenerError() {
         $persona = new Persona();
         return $persona->getMensajeOp();
     }
+
 }
