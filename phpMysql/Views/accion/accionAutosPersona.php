@@ -60,15 +60,15 @@
             <div class="mb-3">
                 <h2 class="d-flex justify-content-center">Autos:</h2>
                 <table class="table table-striped">
+                    <tr>
+                        <th>Patente</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th></th>
+                    </tr>
                     <?php
                         if( isset($autosData) ){
                             foreach( $autosData as $auto ){
-                                echo '<tr>';
-                                echo '<th>Patente</th>';
-                                echo '<th>Marca</th>';
-                                echo '<th>Modelo</th>';
-                                echo '<th></th>';
-                                echo '</tr>';
                                 echo '<tr>';
                                 echo '<td>' .$auto->getPatente(). '</td>';
                                 echo '<td>' .$auto->getMarca(). '</td>';
