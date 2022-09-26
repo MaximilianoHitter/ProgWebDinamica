@@ -4,9 +4,9 @@
     $objPersona = new PersonaControl();
     $objAuto = new AutoControl();
 
-    $autosData = $objAuto->buscarDueño( $data );
     $personasArray = $objPersona->buscar( $data );
-
+    $autosData = $objAuto->buscarDueño( $data );
+    
     $objPersonaEncontrada = null;
     if( isset($data['NroDni']) ){
         // Si se encuentra una persona en el arreglo entonces guardamos el objeto de la persona en una variable
@@ -35,7 +35,7 @@
 
     <div class="d-flex justify-content-center m-3">
         <div class="col-md-12">
-            <h2>DNI Consultado: </h2>
+            <h2 class="d-flex justify-content-center">DNI Consultado: </h2>
             <div class="mb-3">
                 <table class="table table-striped">
                     <tr>
@@ -58,16 +58,17 @@
                 </table>
             </div>
             <div class="mb-3">
+                <h2 class="d-flex justify-content-center">Autos:</h2>
                 <table class="table table-striped">
-                    <tr>
-                        <th>Patente</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th></th>
-                    </tr>
                     <?php
                         if( isset($autosData) ){
                             foreach( $autosData as $auto ){
+                                echo '<tr>';
+                                echo '<th>Patente</th>';
+                                echo '<th>Marca</th>';
+                                echo '<th>Modelo</th>';
+                                echo '<th></th>';
+                                echo '</tr>';
                                 echo '<tr>';
                                 echo '<td>' .$auto->getPatente(). '</td>';
                                 echo '<td>' .$auto->getMarca(). '</td>';
@@ -75,7 +76,7 @@
                                 echo '</tr>';
                             }
                         } else {
-                            echo '<p>La persona ingresada no posee ningún auto. Se salvó de pagar impuestos!</p>';
+                            echo '<p class="lead">La persona ingresada no posee ningún auto. Se salvó de pagar impuestos!</p>';
                         }
                     ?>
                 </table>

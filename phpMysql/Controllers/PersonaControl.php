@@ -144,7 +144,7 @@ class PersonaControl extends Controller
         $where = " true ";
         if( $param <> null ){
             if ( isset($param['NroDni']) ){
-                $where .= " and nro_dni = '" . $param['NroDni'] . "'";
+                $where .= " and NroDni = '" . $param['NroDni'] . "'";
             } if ( isset($param['nombre']) ){
                 $where .= " and nombre = '" . $param['Nombre'] . "'";
             } if ( isset($param['apellido']) ){

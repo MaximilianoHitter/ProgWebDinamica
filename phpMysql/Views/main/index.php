@@ -20,8 +20,8 @@
     <div id="resumen" class="cuadro">
         <div class="hijo">
             <h2><p class="grupo1 text-center pt-3 mp-3">Somos el Grupo 5 </p></h2><br>  
-            <h2><p class="grupo text-center pt-3 mp-3"> Rojo ,Jerónimo</p></h2>
-            <h2><p class="grupo text-center pt-3 mp-3">Parra Marín, Gonzalo</p></h2>
+            <h2><p class="grupo text-center pt-3 mp-3">Rojo, Jerónimo</p></h2>
+            <h2><p class="grupo text-center pt-3 mp-3">Parra Marin, Gonzalo</p></h2>
             <h2><p class="grupo text-center pt-3 mp-3">Hitter, Maximiliano</p></h2>
             <h2><p class="grupo text-center pt-3 mp-3">Klimisch, Marcia</p></h2>
             <br>

@@ -19,9 +19,9 @@
     <h3><p class= "titulos text-center bienvenida">INGRESE EL DNI DE LA PERSONA A CONSULTAR</p></h3>
     
     <div>
-        <form action="../accion/accionDniConAuto.php" method="POST">
+        <form action="../accion/accionAutosPersona.php" method="POST">
             <div class="form-floating d-flex p-2 justify-content-center m-3">
-                <input type="number" class="form-control " id="NroDni" name="NroDni" placeholder="Patente">
+                <input type="number" class="form-control " id="NroDni" name="NroDni" placeholder="patente">
                 <label for="patente">DNI a buscar</label>
                 <input class="btn m-3" style="background-color: #563d7c; color:white;" type="submit" value="Buscar autos asociados" id="boton" disabled>
                 <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../personas/listaPersonas.php">Volver</a>
