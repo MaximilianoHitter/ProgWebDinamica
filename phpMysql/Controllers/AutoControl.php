@@ -36,12 +36,18 @@ class AutoControl extends Controller
         $resp = null;
         $modeloAuto = new Auto();
         $modeloPersona = new PersonaControl();
-        if ($modeloPersona->buscarPorDni($datos['inputDniDuenio'])) {
-            $modeloAuto->setear($datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio']);
-            if ($modeloAuto->insertar()) {
-                $resp = true;
-            }
-        };
+        $autoPatente = $this->obtenerPorPatente($datos['inputPatente']);
+        if($autoPatente == null){
+            if ($modeloPersona->buscarPorDni($datos['inputDniDuenio'])) {
+                $modeloAuto->setear($datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio']);
+                if ($modeloAuto->insertar()) {
+                    $resp = true;
+                }
+            };
+        }else if(count($autoPatente) > 0){
+            $resp = false;
+        }
+        
 
         return $resp;
     }

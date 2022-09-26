@@ -30,9 +30,9 @@ if(isset($datos['accion'])){
     } */
 
     if($resp){
-        $mensaje = 'La accion de  '.$datos['accion'].' fue hecha correctamente';
+        $mensaje = true;
     }else{
-        $mensaje = 'No se pudo realizar la accion de  '.$datos['accion'];
+        $mensaje = false;
     }
 }
 
@@ -57,7 +57,13 @@ if(isset($datos['accion'])){
 <?php require_once '../templates/header.php'?>
 
 
-    <?php echo $mensaje;?>
+    <?php 
+        if($mensaje){ ?>
+            <h1 class="text-center mt-3">Accion realizada con exito.</h1>
+       <?php } else{ ?>
+            <h1 class="text-center mt-3">No se pudo ingresar la persona porque el DNI ya se encuentra en la base de datos.</h1>
+      <?php  }
+    ?>
 
 
     <?php require_once '../templates/footer.php'; ?>

@@ -6,10 +6,10 @@ $resp = false;
 
 $objAutControl = new AutoControl();
 
-if($objAutControl->obtenerPorPatente($datos['patente'])){
+if ($objAutControl->obtenerPorPatente($datos['patente'])) {
     $auto = $objAutControl->obtenerPorPatente($datos['patente']);
     $resp = true;
-} ;
+};
 
 ?>
 
@@ -31,21 +31,26 @@ if($objAutControl->obtenerPorPatente($datos['patente'])){
 <body>
     <?php require_once '../templates/header.php' ?>
 
-    <?php 
-    if($resp){ ?>
-        <p>Patente: <?php echo $auto[0]->getPatente() ?>, <br>
-        Marca: <?php echo $auto[0]->getMarca() ?>, <br>
-        Modelo: <?php echo $auto[0]->getModelo() ?>, <br>
-        DNI dueño: <?php echo $auto[0]->getDniDuenio() ?>
-        </p>
-
-    <?php } else{ ?>
-        <h1>No se encontro el auto</h1>
-        
-    <?php 
+    <?php
+    if ($resp) { ?>
+        <div class="col">
+            <div id="card">
+                <div class="autos card-body border m-3">
+                    <p><strong>Patente:</strong> <?php echo $auto[0]->getPatente() ?>, <br>
+                        <strong>Marca:</strong> <?php echo $auto[0]->getMarca() ?>, <br>
+                        <strong>Modelo:</strong> <?php echo $auto[0]->getModelo() ?>, <br>
+                        <strong>DNI dueño:</strong> <?php echo $auto[0]->getDniDuenio() ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <?php } else { ?>
+        <h1 class="m-3 text-center">No ha sido encontrado el número de patente.</h1>
+    <?php
     }
     ?>
 
+    <a href="../buscarAuto/index.php" class="btn ms-4" style="background-color:#563d7c; color:white;">Volver</a>
     <?php require_once '../templates/footer.php' ?>
 </body>
 

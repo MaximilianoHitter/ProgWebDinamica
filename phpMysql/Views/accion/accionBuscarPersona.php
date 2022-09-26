@@ -29,47 +29,48 @@ $mensaje = $objCtrlPersona->buscarPorDni($datos['inputDni']);
 <body>
     <?php require_once '../templates/header.php' ?>
 
-    <?php 
-        if($mensaje != null){ ?>
+    <?php
+    if ($mensaje != null) { ?>
         <div class="containerForm m-3 p-2">
-        <form action="../accion/ActualizarDatosPersona.php" method="post">
-            <div class="form-floating mb-3">
-                <label for="inputDni"></label>
-                <input type="number" class="form-control" name="inputDni" id="inputDni" value="<?php echo $mensaje[0]->getNroDni() ?>" readonly=»readonly» >
-            </div>
-            <div class="form-floating mb-3">
-                <label for="inputApellido"></label>
-                <input type="text" class="form-control" name="inputApellido" id="inputApellido" value="<?php echo $mensaje[0]->getApellido() ?>">
-            </div>
-            <div class="form-floating mb-3">
-                <label for="inputNombre"></label>
-                <input type="text" class="form-control" name="inputNombre" id="inputNombre" value="<?php echo $mensaje[0]->getNombre() ?>">
-            </div>
-            <div class="form-floating mb-3">
-                <label for="inputFechaNac"></label>
-                <input type="date" class="form-control" name="inputFechaNac" id="inputFechaNac" value="<?php echo $mensaje[0]->getFechaNac() ?>">
-            </div>
-            <div class="form-floating mb-3">
-                <label for="inputTelefono"></label>
-                <input type="text" class="form-control" name="inputTelefono" id="inputTelefono" value="<?php echo $mensaje[0]->getTelefono() ?>">
-            </div>
-            <div class="form-floating mb-3">
-                <label for="inputDomicilio"></label>
-                <input type="text" class="form-control" name="inputDomicilio" id="inputDomicilio" value="<?php echo $mensaje[0]->getDomicilio() ?>">
-            </div>
+            <form action="../accion/ActualizarDatosPersona.php" method="post">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="inputDni" id="inputDni" value="<?php echo $mensaje[0]->getNroDni() ?>" readonly=»readonly»>
+                    <label for="inputDni">DNI</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="inputApellido" id="inputApellido" value="<?php echo $mensaje[0]->getApellido() ?>">
+                    <label for="inputApellido">Apellido</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="inputNombre" id="inputNombre" value="<?php echo $mensaje[0]->getNombre() ?>">
+                    <label for="inputNombre">Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="inputFechaNac" id="inputFechaNac" value="<?php echo $mensaje[0]->getFechaNac() ?>">
+                    <label for="inputFechaNac">Fecha de nacimiento (dd/mm/aaaa)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="inputTelefono" id="inputTelefono" value="<?php echo $mensaje[0]->getTelefono() ?>">
+                    <label for="inputTelefono">Telefono</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="inputDomicilio" id="inputDomicilio" value="<?php echo $mensaje[0]->getDomicilio() ?>">
+                    <label for="inputDomicilio">Domicilio</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="btn" style="background-color:#563d7c; color:white;" type="submit" value="Modificar">
+                </div>
 
-            <div class="form-floating mb-3">
-                <input type="submit" value="Modificar">
-            </div>
+            </form>
+        </div>
+    <?php } else { ?>
 
-        </form>
-    </div>
-       <?php } else{ ?>
-        
         <h1 class="text-center mt-3">No se encontro a la persona buscada.</h1>
 
-     <?php  }
+    <?php  }
     ?>
+
+    <a href="../buscarPersona/index.php" class="btn ms-4" style="background-color:#563d7c; color:white;">Volver</a>
     <?php require_once '../templates/footer.php' ?>
 </body>
 

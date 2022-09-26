@@ -37,12 +37,12 @@ if($objCtrlAuto->cambiarDuenio($datos)){
 
     <?php
     if($resp){ ?>
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success m-3" role="alert">
             Dueño modificado!
         </div>
         
    <?php }else{ ?>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger m-3" role="alert">
                  No se pudo cambiar! Verifique que la patente o el DNI del nuevo dueño exista en el registro.
             </div>
        
