@@ -17,14 +17,14 @@ class AutoControl extends Controller {
     public function buscar( $param ){
         $where = " true ";
         if( $param != null ){
-            if ( isset($param['Patente']) ){
-                $where .= " and patente = '" . $param['Patente'] . "'";
-            } if ( isset($param['Marca']) ){
-                $where .= " and marca = '" . $param['Marca'] . "'";
-            } if ( isset($param['Modelo']) ){
-                $where .= " and modelo ='" . $param['Modelo'] . "'";
-            } if ( isset($param['DniDuenio']) ){
-                $where .= " and dni_duenio = '" . $param['DniDuenio'] . "'";
+            if ( isset($param['inputPatente']) ){
+                $where .= " and Patente = '" . $param['inputPatente'] . "'";
+            } if ( isset($param['inputMarca']) ){
+                $where .= " and Marca = '" . $param['inputMarca'] . "'";
+            } if ( isset($param['inputModelo']) ){
+                $where .= " and Modelo ='" . $param['inputModelo'] . "'";
+            } if ( isset($param['inputDniDuenio']) ){
+                $where .= " and DniDuenio = '" . $param['inputDniDuenio'] . "'";
             }
         }
         $array = Auto::listar( $where );
@@ -33,26 +33,28 @@ class AutoControl extends Controller {
 
     public function listar() {
         $lista = '';
-        $objAuto = new Auto();
-        $arrayAutos = $objAuto->listar();
+
+        $arrayAutos = Auto::listar();
         foreach ($arrayAutos as $key) {
             $lista .= 'Patente: ' . $key->getPatente() . '<br>' .
                 'Marca: ' . $key->getMarca() . '<br>' .
                 'Modelo: ' . $key->getModelo() . '<br>' .
-                'DNI Dueño: ' . $key->getDniDuenio() . '<br>';
+                'DNI Dueño: ' . $key->getObjPersona()->getNroDni() . '<br>';
         }
         return $lista;
         //return $this->autoObj->listar();
     }
 
     public function insertar( $datos ){
-        $resp = null;
         $modeloAuto = new Auto();
         $modeloPersona = new PersonaControl();
+
         $autoPatente = $this->obtenerPorPatente($datos['inputPatente']);
+
+        $resp = null;
         if( $autoPatente == null ){
             if( $modeloPersona->buscarPorDni($datos['inputDniDuenio']) ){
-                $modeloAuto->setear( $datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio'] );
+                $modeloAuto->cargar( $datos['inputPatente'], $datos['inputMarca'], $datos['inputModelo'], $datos['inputDniDuenio'] );
                 if( $modeloAuto->insertar() ){
                     $resp = true;
                 }
@@ -70,13 +72,27 @@ class AutoControl extends Controller {
      * @return Persona
      */
     private function cargarObjeto( $param ){
-        $obj = null;
+        /* $obj = null;
 
         if( array_key_exists('inputId', $param) and array_key_exists('inputDniDuenio', $param) ){
             $obj = new Auto();
             $obj->setear($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
         }
-        return $obj;
+        return $obj; */
+        $auto = null;
+        if( array_key_exists('Patente', $param) &&
+            array_key_exists('Marca', $param) &&
+            array_key_exists('Modelo', $param) &&
+            array_key_exists('objPersona', $param) ){
+                $auto = new Auto();
+                $auto->cargar(
+                    $param['Patente'],
+                    $param['Marca'],
+                    $param['Modelo'],
+                    $param['objPersona']
+                );
+        }
+        return $auto;
     }
 
     /**
@@ -88,7 +104,7 @@ class AutoControl extends Controller {
         $obj = null;
         if (isset($param['inputId'])) {
             $obj = new Auto();
-            $obj->setear($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
+            $obj->cargar($param['inputId'], $param['inputMarca'], $param['inputModelo'], $param['inputDniDuenio']);
         }
         return $obj;
     }
@@ -103,8 +119,10 @@ class AutoControl extends Controller {
         //$param['inputDni'] = null;
         $elObjAuto = $this->cargarObjeto($param);
 
-        if ($elObjAuto != null and $elObjAuto->insertar()) {
-            $resp = true;
+        if ($elObjAuto != null) {
+            if( $elObjAuto->insertar() ){
+                $resp = true;
+            }
         }
         return $resp;
     }
@@ -179,7 +197,7 @@ class AutoControl extends Controller {
         $arrayObjPersonas = $objPersona->listar();
         foreach( $arrayObjPersonas as $clave ){
             foreach( $arrayObjAutos as $key ){
-                if( $clave->getNroDni() == $key->getDniDuenio() ){
+                if( $clave->getNroDni() == $key->getObjPersona()->getNroDni() ){
                     $lista[] = array(
                         'duenio' => $clave,
                         'auto' => $key
@@ -200,7 +218,8 @@ class AutoControl extends Controller {
         //print_r($persona);
         $auto = $this->obtenerPorPatente( $datos['inputPatente'] );
         if( count($persona) > 0 && count($auto) > 0 ){
-            $auto[0]->setDniDuenio( $datos['inputDni'] );
+            $objPersona = $auto[0]->getObjPersona();
+            $objPersona->setNroDni( $datos['inputDni'] );
             if( $auto[0]->modificar() ){
                 $resp = true;
             };

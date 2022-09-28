@@ -39,7 +39,7 @@ if ($objAutControl->obtenerPorPatente($datos['patente'])) {
                     <p><strong>Patente:</strong> <?php echo $auto[0]->getPatente() ?>, <br>
                         <strong>Marca:</strong> <?php echo $auto[0]->getMarca() ?>, <br>
                         <strong>Modelo:</strong> <?php echo $auto[0]->getModelo() ?>, <br>
-                        <strong>DNI dueño:</strong> <?php echo $auto[0]->getDniDuenio() ?>
+                        <strong>DNI dueño:</strong> <?php echo $auto[0]->getObjPersona()->getNroDni() ?>
                     </p>
                 </div>
             </div>

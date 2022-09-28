@@ -1,24 +1,13 @@
-<?php 
-
-include_once '../../config.php';
-
-$datos = data_submitted();
-//print_r ($datos);
-//die();
-$resp = false;
-
-$ctrlNewCar = new AutoControl();
-$ctrlNewPeople = new PersonaControl();
-
-//PARA QUE SE PUEDA CREAR UN AUTO, TIENE QUE EXISTIR EN LA BASE DE DATOS EL DNI DEL DUEÑO
-
-if($ctrlNewPeople->buscarPorDni($datos['inputDniDuenio']) != null){
-    if($ctrlNewCar->insertar($datos)){
-        $resp = true;
+<?php
+    require_once('../../config.php');
+    $data = data_submitted();
+    $objAuto = new AutoControl();
+    if( count($data) > 0 ){
+        $objAuto->insertar( $data );
+        $enviado = $data;
+    } else {
+        $enviado = null;
     }
-};
-
-
 ?>
 
 <!DOCTYPE html>
@@ -27,27 +16,47 @@ if($ctrlNewPeople->buscarPorDni($datos['inputDniDuenio']) != null){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../Public/bootstrap-5.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../Public/cssPuro/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-    <?php require_once '../templates/header.php';
-    if($resp){ ?>
-        <div class="alert alert-success m-3" role="alert">
-            El alta del auto se registró correctamente!
-        </div>
-    <?php }else{?>
-            <div class="alert alert-danger m-3" role="alert">
-                Algo salió mal. La persona dueña del auto debe estar registrada antes de registrar el auto o la patente de este ya se encuentra registrada.
-            </div>
-    
-            <?php }?>
+    <title>Nuevo Auto</title>
 
-        <a class="btn m-3" style="background-color:#563d7c; color:white;" href="../nuevoAuto/index.php">Volver</a>
-<?php require_once '../templates/footer.php' ?>
+    <!-- Bootstrap -->
+    <script src="../../Public/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../Public/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="d-flex justify-content-center m-3">
+        <div class="container col-md-12">
+            <h2>Agregar un auto</h2>
+            <div class="mb-3">
+                <?php
+                if( $enviado !== null ){
+                ?>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Patente</th>
+                        <th>DNI Dueño</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td><?php echo $enviado['inputMarca']; ?></td>
+                        <td><?php echo $enviado['inputModelo']; ?></td>
+                        <td><?php echo $enviado['inputPatente']; ?></td>
+                        <td><?php echo $enviado['inputDniDuenio']; ?></td>
+                    </tr>
+                </table>
+                <?php
+                } else {
+                    echo '<p class="lead">El auto no se ha podido agregar</p>';
+                }
+                ?>
+                
+            </div>
+            <div class="mb-3">
+                <a href="../nuevoAuto/index.php"><button class="btn btn-warning">Volver</button></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -57,12 +57,12 @@ if ($resp = true) {
                 <div class="col-sm-4">
                     <div id="card">
                         <div class="autos card-body border m-3">
-                            <p><strong>Nombre: </strong><?php echo $key['duenio']->getNombre() ?></p>
-                            <p><strong>Apellido: </strong><?php echo $key['duenio']->getApellido() ?></p>
-                            <p><strong>Patente: </strong><?php echo $key['auto']->getPatente() ?></p>
-                            <p><strong>Marca: </strong><?php echo $key['auto']->getMarca() ?></p>
-                            <p><strong>Modelo: </strong><?php echo $key['auto']->getModelo() ?></p>
-                            <p><strong>DNI Dueño: </strong><?php echo $key['auto']->getDniDuenio() ?></p>
+                            <p><strong>Nombre: </strong><?php echo $key['duenio']->getNombre(); ?></p>
+                            <p><strong>Apellido: </strong><?php echo $key['duenio']->getApellido(); ?></p>
+                            <p><strong>Patente: </strong><?php echo $key['auto']->getPatente(); ?></p>
+                            <p><strong>Marca: </strong><?php echo $key['auto']->getMarca(); ?></p>
+                            <p><strong>Modelo: </strong><?php echo $key['auto']->getModelo(); ?></p>
+                            <p><strong>DNI Dueño: </strong><?php echo $key['auto']->getObjPersona()->getNroDni(); ?></p>
                         </div>
                     </div>
                 </div>

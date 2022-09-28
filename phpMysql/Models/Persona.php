@@ -79,6 +79,35 @@ class Persona {
         $this->mensajeOp = $mensajeOp;
     }
 
+    /**
+     * Método que busca y devuelve los datos 
+     */
+    public function buscar( $dni ){
+        $pdo = new db();
+        $consulta = "SELECT * FROM persona WHERE NroDni = " .$dni;
+        $bandera = false;
+
+        if( $pdo->Iniciar() ){
+            if( $pdo->Ejecutar($consulta) ){
+                if( $row2 = $pdo->Registro() ){
+                    $this->setNroDNI( $dni );
+                    $this->setApellido( $row2['Apellido'] );
+                    $this->setNombre( $row2['Nombre'] );
+                    $this->setFechaNac( $row2['fechaNac'] );
+                    $this->setTelefono( $row2['Telefono'] );
+                    $this->setDomicilio( $row2['Domicilio'] );
+                    $bandera = true;
+                }
+            } else {
+                $this->setMensajeOp( $pdo->getError() );
+            }
+        } else {
+            $this->setMensajeOp( $pdo->getError() );
+        }
+        $pdo = null;
+        return $bandera;
+    }
+
     public function cargar() {
         $resp = false;
         $base = new Db();

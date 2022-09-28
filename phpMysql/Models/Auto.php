@@ -5,22 +5,21 @@ class Auto {
     private $patente;
     private $marca;
     private $modelo;
-    private $dniDuenio;
+    private $objPersona;
     private $mensajeOp;
 
     function __construct() {
-        $this->patente   = '';
-        $this->marca     = '';
-        $this->modelo    = '';
-        $this->dniDuenio = '';
-        $this->mensajeOp = '';
+        $this->patente    = '';
+        $this->marca      = '';
+        $this->modelo     = '';
+        $this->mensajeOp  = '';
     }
 
-    public function setear( $idAuto, $marca, $modelo, $dniDuenio ){
+    public function setear( $idAuto, $marca, $modelo, $objPersona ){
         $this->setPatente( $idAuto );
         $this->setMarca( $marca );
         $this->setModelo( $modelo );
-        $this->setDniDuenio( $dniDuenio );
+        $this->setObjPersona( $objPersona );
     }
 
     // Getters & Setters
@@ -45,11 +44,11 @@ class Auto {
         $this->modelo = $modelo;
     }
 
-    public function getDniDuenio() {
-        return $this->dniDuenio;
+    public function getObjPersona() {
+        return $this->objPersona;
     }
-    public function setDniDuenio( $dniDuenio ){
-        $this->dniDuenio = $dniDuenio;
+    public function setObjPersona( $objPersona ){
+        $this->objPersona = $objPersona;
     }
 
     public function getMensajeOp() {
@@ -59,9 +58,23 @@ class Auto {
         $this->mensajeOp = $mensajeOp;
     }
 
-    public function cargar() {
+    public function cargar($patente, $marca, $modelo, $documento){
+        $objPersona = new Persona();
+        
+        $bandera = false;
+        if( $objPersona->buscar($documento) ){
+            $this->setPatente( $patente );
+            $this->setMarca( $marca );
+            $this->setModelo( $modelo );
+            $this->setObjPersona( $objPersona );   
+            $bandera = true;
+        }
+        return $bandera;
+    }
+
+    /* public function cargar() {
         $resp = false;
-        $base = new Db();
+        $base = new db();
         $sql = "SELECT * FROM auto WHERE patente = ". $this->getPatente();
         if( $base->iniciar() ){
             $resp = $base->Ejecutar( $sql );
@@ -73,13 +86,18 @@ class Auto {
             $this->setMensajeOp( 'Auto->listar: '.$base->getError() );
         }
         return $resp;
-    }
+    } */
 
     
     public function insertar() {
-        $resp = false;
         $base = new Db();
-        $sql = 'INSERT INTO auto(Patente, Marca, Modelo, DniDuenio) VALUES("'.$this->getPatente().'","'.$this->getMarca().'","'.$this->getModelo().'","'.$this->getDniDuenio().'");';
+
+        $objPersona = $this->getObjPersona();
+        $nroDni = $objPersona->getNroDni();
+
+        $sql = 'INSERT INTO auto(Patente, Marca, Modelo, DniDuenio) VALUES("'.$this->getPatente().'","'.$this->getMarca().'","'.$this->getModelo().'","'.$nroDni.'");';
+        
+        $resp = false;
         if( $base->Iniciar() ){
             if( $elid = $base->Ejecutar($sql) ){
                 $this->setPatente( $elid );
@@ -94,9 +112,14 @@ class Auto {
     }
 
     public function modificar() {
-        $resp = false;
         $base = new Db();
-        $sql = "UPDATE auto SET Marca='".$this->getMarca()."', Modelo='".$this->getModelo()."', DniDuenio='".$this->getDniDuenio()."' WHERE Patente ='".$this->getPatente()."';";
+
+        $objPersona = $this->getObjPersona();
+        $nroDni = $objPersona->getNroDni();
+
+        $sql = "UPDATE auto SET Marca='".$this->getMarca()."', Modelo='".$this->getModelo()."', DniDuenio='".$nroDni."' WHERE Patente ='".$this->getPatente()."';";
+
+        $resp = false;
         if( $base->Iniciar() ){
             if( $base->Ejecutar($sql) ){
                 $resp = true;
@@ -110,9 +133,11 @@ class Auto {
     }
 
     public function eliminar() {
-        $resp = false;
         $base = new Db();
+
         $sql = "DELETE FROM auto WHERE Patente=".$this->getPatente();
+
+        $resp = false;
         if( $base->Iniciar() ){
             if( $base->Ejecutar($sql) ){
                 $resp = true;
@@ -136,9 +161,18 @@ class Auto {
         if( $res>-1 ){
             if( $res>0 ){
                 while( $row = $base->Registro() ){
-                    $obj = new Auto();
-                    $obj->setear( $row['Patente'], $row['Marca'], $row["Modelo"], $row['DniDuenio'] );
-                    array_push( $arreglo, $obj );
+                    $patente = $row['Patente'];
+                    $marca = $row['Marca'];
+                    $modelo = $row['Modelo'];
+
+                    $persona = new Persona();
+                    $dniDuenio = $row['DniDuenio'];
+                    $persona->buscar( $dniDuenio );
+                    $objPersona = $persona;
+
+                    $auto = new Auto();
+                    $auto->setear( $patente, $marca, $modelo, $objPersona );
+                    array_push( $arreglo, $auto );
                 }
             }
         } else {
